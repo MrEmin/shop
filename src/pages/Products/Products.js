@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, FlatList} from 'react-native';
-//import Config from 'react-native-config';
-import {API_URL, API_TOKEN} from '@env';
+import {View, FlatList} from 'react-native';
+import {API_URL} from '@env';
 import axios from 'axios';
+
+import ProductCard from '../../components/ProductCard';
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -12,11 +13,11 @@ const Products = () => {
   }, []);
 
   const fetchData = async () => {
-    const {data: productData} = await axios.get(`${API_URL}`);
+    const {data: productData} = await axios.get(API_URL);
     setData(productData);
   };
 
-  const renderProduct = ({item}) => <Text>{item.title}</Text>;
+  const renderProduct = ({item}) => <ProductCard product={item} />;
 
   return (
     <View>
