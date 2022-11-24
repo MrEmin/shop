@@ -1,23 +1,23 @@
 import React from 'react';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import {View, Text, FlatList} from 'react-native';
 import {API_URL} from '@env';
 
 import ProductCard from '../../components/ProductCard';
 import useFetch from '../../hooks/useFetch';
+import Loading from '../../components/Loading';
+import Error from '../../components/Error';
 
 const Products = () => {
   const {loading, data, error} = useFetch(API_URL);
-  console.log('render');
-  console.log({loading, data: data.length, error});
 
   const renderProduct = ({item}) => <ProductCard product={item} />;
 
   if (loading) {
-    return <ActivityIndicator size="large" />;
+    return <Loading />;
   }
 
   if (error) {
-    return <Text>{error}</Text>;
+    return <Error />;
   }
 
   return (
