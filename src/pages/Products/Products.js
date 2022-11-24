@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {API_URL} from '@env';
 
 import ProductCard from '../../components/ProductCard';
